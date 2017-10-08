@@ -1,14 +1,14 @@
 # Makefile
-TRAIN="../data/data_sets2/training_set.csv"
-VAL="../data/data_sets2/validation_set.csv"
-TEST="../data/data_sets2/test_set.csv"
-PRUNE=0.2
-CHOICE="info_gain"
+TRAIN="../data/data_sets1/training_set.csv"
+VAL="../data/data_sets1/validation_set.csv"
+TEST="../data/data_sets1/test_set.csv"
+# PRUNE=0.2
+# CHOICE="info_gain"
 
 all: run
 
 run: ./partii/run.py
-	python ./partii/run.py --train $(TRAIN) --validation $(VAL) --test $(TEST) --prune $(PRUNE) --choice $(CHOICE)
+	python ./partii/run.py --train $(TRAIN) --validation $(VAL) --test $(TEST)
 
 clean:
 	rm -rf */*.pyc

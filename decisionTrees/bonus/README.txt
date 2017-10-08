@@ -1,14 +1,14 @@
 #README.txt
 
-Machine Learning CS6375 -- Assignment 2 Bonus
+Machine Learning CS6375 -- Assignment 2
 
-BONUS
+PART 2
 
 Programming Language used: Python
 
 ************************************************************ TO RUN *************************************************************
 
-# Main file to run: "run.py"
+# Main file to run: "partii/run.py"
 
 ```
 	usage: run.py [-h] --train TRAIN --validation VALIDATION --test TEST
@@ -24,6 +24,8 @@ Programming Language used: Python
 	  --test TEST           Supply a test dataset.
 
 ```
+
+* The "choice" argument is added for the bonus assignment, which can either make your decision tree on random choices or best choices using Information Gain.
 
 
 # Example run command on bash shell:

@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+## Machine Learning Bucket
 
-You can use the [editor on GitHub](https://github.com/evamy/mlBucket/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+I seem to have learnt a lot of theory relating to machine learning algorithms. This seems like the right time to experiment with my understanding of each of the algorithms. I would be implementing as many as possible from the [Machine Learning by Tom Mitchell](https://www.amazon.com/Learning-McGraw-Hill-International-Editions-Computer/dp/0071154671/ref=mt_paperback?_encoding=UTF8&me=&dpID=41nTpcpgmiL&preST=_SY291_BO1,204,203,200_QL40_&dpSrc=detail) book.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Decision Trees
 
-### Markdown
+The current implementation of decision trees is based on boolean attributes and classes. You can construct the decision tree using the best attribute selection as in the ID3 algorithm or by randomly choosing attributes. The random choice of attributes may give you bigger trees (which are not always good).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Neural Networks
 
-```markdown
-Syntax highlighted code block
+This implementation of neural networks is a close representation of the MLPClassifier of Scikit-Learn. The main algorithm implemented is the Back-Propagation algorithm. I am also working on a parallelization of the code over the cores in the system for faster implementation and weight tuning.
 
-# Header 1
-## Header 2
-### Header 3
+## Support or Contact
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/evamy/mlBucket/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Check out the [code](https://github.com/evamy/mlBucket/) or [contact me](email://antriksh.agarwal1@utdallas.edu) and I’ll help you out.

@@ -337,7 +337,7 @@ class Network():
             for node, t in zip(self.layers[-1].nodes, target):
                 error += np.square(t - node.value) / 2.
 
-        return np.abs(error)
+        return np.abs(error / examples.shape[0])
 
     def checkError(self, target):
         """

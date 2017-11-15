@@ -4,7 +4,7 @@ from sklearn.linear_model import Perceptron
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 
-clf = Perceptron(penalty='l2', alpha=0.0000001)
+clf = Perceptron(penalty='l1', alpha=0.000005)
 
 X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
 Y = X["class"]

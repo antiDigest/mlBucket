@@ -4,7 +4,7 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 
-clf = SVC(kernel='poly', C=5)
+clf = SVC(kernel='poly', degree=2)
 
 X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
 Y = X["class"]

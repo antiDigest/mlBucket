@@ -5,8 +5,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 
 clf = tree.DecisionTreeClassifier(
-    max_depth=8, min_samples_split=5, max_leaf_nodes=65)
-
+    max_depth=10, min_samples_split=7, max_leaf_nodes=70)
 X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
 Y = X["class"]
 X = X[list(X.columns)[1:]]

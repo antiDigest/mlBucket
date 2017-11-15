@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 
 clf = MLPClassifier(hidden_layer_sizes=(
-    20, 10, 5, 2, 1), learning_rate="adaptive")
+    20, 10, 5 ,2 ,1), learning_rate="constant")
 
 X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
 Y = X["class"]

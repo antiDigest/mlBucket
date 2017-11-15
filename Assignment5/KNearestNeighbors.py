@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
-from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 
-clf = SVC(kernel='poly', C=5)
+clf = KNeighborsClassifier()
 
 X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
 Y = X["class"]

@@ -4,23 +4,17 @@ from sklearn import tree
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 
-clf = tree.DecisionTreeClassifier(
-    max_depth=8, min_samples_split=5, max_leaf_nodes=65)
 
-X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
-Y = X["class"]
-X = X[list(X.columns)[1:]]
+def decisionTree(X, Y, X_test, Y_test):
 
-X_test = pd.read_csv("data/Crowdsourced Mapping/testing.csv", header=0)
-Y_test = X_test["class"]
-X_test = X_test[list(X_test.columns)[1:]]
+    clf = tree.DecisionTreeClassifier(
+        max_depth=8, min_samples_split=5, max_leaf_nodes=65)
 
-# clf.fit(X, Y)
+    # clf.fit(X, Y)
+    scores = cross_val_score(clf, X, Y, cv=8, scoring='accuracy')
 
-scores = cross_val_score(clf, X, Y, cv=10, scoring='accuracy')
+    return scores.mean()
 
-print(scores.mean())
+    # Y_pred = clf.predict(X_test)
 
-# Y_pred = clf.predict(X_test)
-
-# print accuracy_score(Y_test, Y_pred)
+    # print accuracy_score(Y_test, Y_pred)

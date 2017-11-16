@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import f_classif
-from sklearn.preprocessing import scale, normalize
+from sklearn.preprocessing import scale, normalize, MinMaxScaler
 
 from DecisionTree import decisionTree
 from SVM import svc
@@ -13,6 +13,8 @@ from GradientBoosting import gradientBoost
 from KNearestNeighbors import knn
 from RandomForest import randomForest
 from AdaBoost import adaboost
+from DeepLearning import deep
+from NaiveBayes import mnb
 
 
 X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
@@ -21,8 +23,10 @@ X = X[list(X.columns)[1:]]
 # print X.columns
 X = SelectKBest(f_classif, k=20).fit_transform(X, Y)
 # print X.columns
-X = scale(X)
-X = normalize(X)
+scaler = MinMaxScaler()
+scaler.fit(X)
+X = scaler.transform(X)
+# X = normalize(X)
 
 X_test = pd.read_csv("data/Crowdsourced Mapping/testing.csv", header=0)
 Y_test = X_test["class"]
@@ -32,7 +36,9 @@ X_test = scale(X_test)
 print "Decision Tree: ", decisionTree(X, Y, X_test, Y_test)
 print "Perceptron: ", perceptron(X, Y, X_test, Y_test)
 print "Neural Network: ", neuralNet(X, Y, X_test, Y_test)
+print "Deep Learning: ", deep(X, Y, X_test, Y_test)
 print "SVM: ", svc(X, Y, X_test, Y_test)
+print "Naive Bayes: ", mnb(X, Y, X_test, Y_test)
 print "Logistic Regression: ", logisticRegression(X, Y, X_test, Y_test)
 print "KNearestNeighbors: ", knn(X, Y, X_test, Y_test)
 print "Random Forest: ", randomForest(X, Y, X_test, Y_test)

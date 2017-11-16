@@ -1,11 +1,9 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import BaggingClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import cross_val_score
+from CrossValidation import crossValidation
 
 
-def bagging(X, Y, X_test, Y_test):
+def bagging(X, Y, X_test, Y_test, cv=10):
     clf = BaggingClassifier()
-    scores = cross_val_score(clf, X, Y, cv=8, scoring='accuracy')
-    return scores.mean()
+    return crossValidation(clf, X, Y)

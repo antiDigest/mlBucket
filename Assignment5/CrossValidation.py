@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.metrics import accuracy_score, precision_score, recall_score, classification_report
+from sklearn.metrics import accuracy_score, precision_score, recall_score, classification_report, f1_score
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 
 
@@ -10,7 +10,7 @@ def crossValidation(clf, X, Y, cv=10):
     skf.get_n_splits(X, Y)
 
     accuracy = 0
-    recall = 0
+    f1 = 0
     precision = 0
 
     for train_index, test_index in skf.split(X, Y):
@@ -23,9 +23,9 @@ def crossValidation(clf, X, Y, cv=10):
         Y_pred = clf.predict(xtest)
 
         accuracy += accuracy_score(ytest, Y_pred)
-        recall += recall_score(ytest, Y_pred, average='weighted')
+        f1 += f1_score(ytest, Y_pred, average='weighted')
         precision += precision_score(ytest, Y_pred, average='weighted')
 
     return {"accuracy": accuracy / cv,
-            "recall": recall / cv,
+            "f1_score": f1 / cv,
             'precision': precision / cv}

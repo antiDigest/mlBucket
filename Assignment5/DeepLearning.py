@@ -6,9 +6,9 @@ from sklearn.model_selection import cross_val_score, StratifiedKFold
 from CrossValidation import crossValidation
 
 
-def neuralNet(X, Y, X_test, Y_test, cv=10):
+def deep(X, Y, X_test, Y_test, cv=10):
 
     clf = MLPClassifier(hidden_layer_sizes=(
-        30, 15, 1), learning_rate="invscaling")
+        20, 10, 5, 2, 1), learning_rate="adaptive")
 
     return crossValidation(clf, X, Y)

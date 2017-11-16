@@ -1,19 +1,13 @@
 import pandas as pd
 import numpy as np
 from sklearn import tree
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import cross_val_score
+from sklearn.metrics import accuracy_score, precision_score, roc_auc_score
+from sklearn.model_selection import cross_val_score, StratifiedKFold
+from CrossValidation import crossValidation
 
 
-def decisionTree(X, Y, X_test, Y_test):
+def decisionTree(X, Y, X_test, Y_test, cv=10):
 
     clf = tree.DecisionTreeClassifier(max_depth=5, min_samples_split=5, max_leaf_nodes=5)
 
-    # clf.fit(X, Y)
-    scores = cross_val_score(clf, X, Y, cv=8, scoring='accuracy')
-
-    return scores.mean()
-
-    # Y_pred = clf.predict(X_test)
-
-    # print accuracy_score(Y_test, Y_pred)
+    return crossValidation(clf, X, Y)

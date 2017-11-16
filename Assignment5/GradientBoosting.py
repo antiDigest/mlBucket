@@ -4,22 +4,12 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score
 
-clf = GradientBoostingClassifier()
 
-X = pd.read_csv("data/Crowdsourced Mapping/training.csv", header=0)
-Y = X["class"]
-X = X[list(X.columns)[1:]]
+def gradientBoost(X, Y, X_test, Y_test):
 
-X_test = pd.read_csv("data/Crowdsourced Mapping/testing.csv", header=0)
-Y_test = X_test["class"]
-X_test = X_test[list(X_test.columns)[1:]]
+    clf = GradientBoostingClassifier(learning_rate=1, n_estimators=50, max_depth=4)
 
-# clf.fit(X, Y)
+    # clf.fit(X, Y)
+    scores = cross_val_score(clf, X, Y, cv=8, scoring='accuracy')
 
-scores = cross_val_score(clf, X, Y, cv=10, scoring='accuracy')
-
-print(scores.mean())
-
-# Y_pred = clf.predict(X_test)
-
-# print accuracy_score(Y_test, Y_pred)
+    return scores.mean()

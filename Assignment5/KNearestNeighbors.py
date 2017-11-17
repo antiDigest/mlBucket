@@ -7,5 +7,5 @@ from CrossValidation import crossValidation
 
 
 def knn(X, Y, X_test, Y_test, cv=10):
-    clf = KNeighborsClassifier(n_neighbors=3, leaf_size=10, p=2)
+    clf = KNeighborsClassifier(n_neighbors=5, leaf_size=30, p=2)
     return crossValidation(clf, X, Y)

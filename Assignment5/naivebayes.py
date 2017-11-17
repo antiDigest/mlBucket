@@ -8,6 +8,6 @@ from CrossValidation import crossValidation
 
 def mnb(X, Y, X_test, Y_test, cv=10):
 
-    clf = MultinomialNB()
+    clf = MultinomialNB(alpha=1.0)
 
     return crossValidation(clf, X, Y)

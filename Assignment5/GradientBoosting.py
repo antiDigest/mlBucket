@@ -8,6 +8,6 @@ from CrossValidation import crossValidation
 
 def gradientBoost(X, Y, X_test, Y_test, cv=10):
 
-    clf = GradientBoostingClassifier(learning_rate=1, n_estimators=50, max_depth=4)
+    clf = GradientBoostingClassifier(learning_rate=0.1, n_estimators=200, max_depth=4)
     return crossValidation(clf, X, Y)
 

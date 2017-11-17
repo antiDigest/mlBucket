@@ -9,6 +9,6 @@ from CrossValidation import crossValidation
 def neuralNet(X, Y, X_test, Y_test, cv=10):
 
     clf = MLPClassifier(hidden_layer_sizes=(
-        30, 15, 1), learning_rate="invscaling")
+        30, 15), learning_rate="invscaling")
 
     return crossValidation(clf, X, Y)

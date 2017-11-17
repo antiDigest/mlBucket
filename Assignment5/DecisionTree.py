@@ -8,6 +8,6 @@ from CrossValidation import crossValidation
 
 def decisionTree(X, Y, X_test, Y_test, cv=10):
 
-    clf = tree.DecisionTreeClassifier(max_depth=5, min_samples_split=5, max_leaf_nodes=5)
+    clf = tree.DecisionTreeClassifier(max_depth=20, min_samples_split=25, max_leaf_nodes=100)
 
     return crossValidation(clf, X, Y)

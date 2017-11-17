@@ -8,5 +8,5 @@ from CrossValidation import crossValidation
 
 def adaboost(X, Y, X_test, Y_test, cv=10):
 
-	clf = AdaBoostClassifier(n_estimators=100, learning_rate=0.1)
+    clf = AdaBoostClassifier(n_estimators=100, learning_rate=0.2)
     return crossValidation(clf, X, Y)

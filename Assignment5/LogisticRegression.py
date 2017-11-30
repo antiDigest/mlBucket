@@ -11,3 +11,7 @@ def logisticRegression(X, Y, X_test, Y_test, cv=10):
     clf = LogisticRegression(penalty="l1", C=2.0)
     return crossValidation(clf, X, Y)
 
+
+def lrclf():
+
+    return LogisticRegression(penalty="l1", C=2.0)

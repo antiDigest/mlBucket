@@ -10,3 +10,8 @@ def perceptron(X, Y, X_test, Y_test, cv=10):
 
     clf = Perceptron(penalty='l1', alpha=0.0001)
     return crossValidation(clf, X, Y)
+
+
+def perceptronclf():
+
+    return Perceptron(penalty='l1', alpha=0.0001)

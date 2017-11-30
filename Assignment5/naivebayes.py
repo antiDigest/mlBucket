@@ -11,3 +11,8 @@ def mnb(X, Y, X_test, Y_test, cv=10):
     clf = MultinomialNB(alpha=1.0)
 
     return crossValidation(clf, X, Y)
+
+
+def mnbclf():
+
+    return MultinomialNB(alpha=1.0)

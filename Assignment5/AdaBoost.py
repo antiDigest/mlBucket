@@ -6,7 +6,13 @@ from sklearn.model_selection import cross_val_score, StratifiedKFold
 
 from CrossValidation import crossValidation
 
+
 def adaboost(X, Y, X_test, Y_test, cv=10):
 
     clf = AdaBoostClassifier(n_estimators=100, learning_rate=0.2)
     return crossValidation(clf, X, Y)
+
+
+def adaboostclf():
+
+    return AdaBoostClassifier(n_estimators=100, learning_rate=0.2)

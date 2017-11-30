@@ -8,5 +8,12 @@ from CrossValidation import crossValidation
 
 def randomForest(X, Y, X_test, Y_test, cv=10):
 
-    clf = RandomForestClassifier(n_estimators=150, max_depth=None, max_leaf_nodes=None)
+    clf = RandomForestClassifier(
+        n_estimators=150, max_depth=None, max_leaf_nodes=None)
     return crossValidation(clf, X, Y)
+
+
+def rfclf():
+
+    return RandomForestClassifier(
+        n_estimators=150, max_depth=None, max_leaf_nodes=None)

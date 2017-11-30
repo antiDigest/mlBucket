@@ -12,3 +12,9 @@ def deep(X, Y, X_test, Y_test, cv=10):
         40, 30, 20, 10, 5, 2, 1), learning_rate="invscaling")
 
     return crossValidation(clf, X, Y)
+
+
+def deepclf():
+
+    return MLPClassifier(hidden_layer_sizes=(
+        40, 30, 20, 10, 5, 2, 1), learning_rate="invscaling")

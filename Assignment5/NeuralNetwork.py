@@ -12,3 +12,9 @@ def neuralNet(X, Y, X_test, Y_test, cv=10):
         30, 15), learning_rate="invscaling")
 
     return crossValidation(clf, X, Y)
+
+
+def nnclf():
+
+    return MLPClassifier(hidden_layer_sizes=(
+        30, 15), learning_rate="invscaling")

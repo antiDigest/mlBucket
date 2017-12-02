@@ -3,14 +3,16 @@
 
 # In[1]:
 
+
 import pandas as pd
 import numpy as np
 import xgboost as xgb
 import lightgbm as gbm
-import sklearn.svm as SVC
+from sklearn.svm import SVC
 
 
 # In[2]:
+
 
 from sklearn.model_selection import train_test_split
 from sklearn.decomposition import PCA
@@ -20,25 +22,21 @@ train = pd.read_csv("train_set.csv")
 train_labels = pd.read_csv("train_set_labels.csv")
 
 train = pd.merge(train, train_labels, on='id')
-train, test = train_test_split(train, test_size=0.2)
 
 
-# In[4]:
+# In[3]:
+
 
 train.head()
 
 
-# In[5]:
-
-test.head()
+# In[4]:
 
 
-# In[91]:
-
-columns = list(set(list(train.columns)[1:-1]) - set(['num_private', 'basin', 
-                                                     'lga', 'region', 'funder', 
+columns = list(set(list(train.columns)[1:-1]) - set(['num_private', 'basin',
+                                                     'lga', 'region', 'funder',
                                                      'installer', 'scheme_name',
-                                                    'scheme_management']))
+                                                     'scheme_management']))
 X = train[columns]
 Y = train[list(train.columns)[-1]]
 
@@ -54,22 +52,19 @@ for column in columns:
     if X[column].dtype not in ['int64', 'float64']:
         X_p[column] = X[column].astype('category')
         X_p[column] = lb_make.fit_transform(X[column].fillna(method='ffill'))
-        
+
 Y_p = lb_make.fit_transform(Y)
 # ohe = OneHotEncoder()
 # ohe.fit(X['funder'])
 # ohe.transform(X['funder']).head()
 # X.head()
-# cols = list(set(columns) - set(['amount_tsh', 'gps_height', 'longitude', 'latitude', 'region_code', 'district_code', 'population']))
+# cols = list(set(columns) - set(['amount_tsh', 'gps_height', 'longitude',
+# 'latitude', 'region_code', 'district_code', 'population']))
 # X_p = pd.get_dummies(X)
 
 
-# In[ ]:
+# In[5]:
 
-
-
-
-# In[51]:
 
 # from sklearn.feature_selection import SelectKBest
 # skb = SelectKBest(k = 10000)
@@ -79,7 +74,8 @@ X_p.shape
 X_p.head()
 
 
-# In[93]:
+# In[10]:
+
 
 # TODO
 pca = PCA(n_components=18)
@@ -89,31 +85,96 @@ X_p = pca.fit_transform(X_p, Y)
 X_p.shape
 
 
-# In[57]:
-
-xgb_x = xgb.DMatrix(X_p)
+# In[11]:
 
 
-# In[94]:
+from sklearn.metrics import classification_report
+from xgboost import XGBClassifier
 
-dtrain = xgb.DMatrix(X_p, label=Y_p)
-
-
-# In[76]:
-
-print(dtrain)
+xtrain, xtest, ytrain, ytest = train_test_split(X_p, Y_p, test_size=0.2)
 
 
-# In[95]:
-
-param = {'max_depth': 2, 'eta': 1, 'silent': 1}
-param['nthread'] = 4
-param['eval_metric'] = 'auc'
-param['eval_metric'] = ['auc', 'ams@0']
-bst = xgb.train(params=param, dtrain=dtrain)
+# In[21]:
 
 
-# In[83]:
+x = XGBClassifier(max_depth=18, learning_rate=0.03,
+                  n_estimators=400, gamma=3, nthread=6)
+x.fit(xtrain, ytrain)
 
-bst.predict(X_p)
 
+# In[22]:
+
+
+pred = x.predict(xtrain)
+
+print(classification_report(ytrain, pred))
+
+pred = x.predict(xtest)
+
+
+print(classification_report(ytest, pred))
+
+
+# In[23]:
+
+
+from sklearn.metrics import accuracy_score, precision_score
+
+print(accuracy_score(ytest, pred))
+print(precision_score(ytest, pred, average='weighted'))
+
+
+# In[43]:
+
+
+from lightgbm import LGBMClassifier
+
+lgbm = LGBMClassifier(boosting_type='dart', num_leaves=173, max_depth=14,
+                      learning_rate=0.2, objective='multiclass', n_estimators=350, n_jobs=6)
+lgbm.fit(xtrain, ytrain)
+
+
+# In[44]:
+
+
+lgbmpred = lgbm.predict(xtrain)
+
+print(classification_report(ytrain, lgbmpred))
+
+lgbmpred = lgbm.predict(xtest)
+
+print(classification_report(ytest, lgbmpred))
+
+
+# In[45]:
+
+
+print(accuracy_score(ytest, lgbmpred))
+print(precision_score(ytest, lgbmpred, average='weighted'))
+
+
+# In[ ]:
+
+
+svm = SVC(kernel='poly', degree=2, verbose=True)
+
+svm.fit(xtrain, ytrain)
+
+
+# In[23]:
+
+
+svmpred = svm.predict(xtrain)
+
+print(classification_report(ytrain, svmpred))
+
+svmpred = svm.predict(xtest)
+
+print(classification_report(ytest, svmpred))
+
+
+# In[ ]:
+
+
+print(accuracy_score(ytest, svmpred))
+print(precision_score(ytest, svmpred, average='weighted'))

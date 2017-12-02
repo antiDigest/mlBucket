@@ -13,7 +13,7 @@ def light(xtrain, ytrain, xtest, ytest):
     sys.stdout.flush()
     print("Plotting Learnign curve")
     sys.stdout.flush()
-    cv = ShuffleSplit(n_splits=100, test_size=0.2, random_state=0)
+    cv = ShuffleSplit(n_splits=15, test_size=0.2, random_state=0)
     plot_learning_curve(lgbm, "DART Classifier Training", xtrain, ytrain,
                         ylim=(0.7, 1.01), cv=cv, n_jobs=4)
 

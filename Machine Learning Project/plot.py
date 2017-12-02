@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_digits
 from sklearn.model_selection import learning_curve
+import sys
 
 
 def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
@@ -52,14 +53,17 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
         plt.ylim(*ylim)
     plt.xlabel("Training examples")
     plt.ylabel("Score")
+
+    print("Making learning curve")
     train_sizes, train_scores, test_scores = learning_curve(
-        estimator, X, y, cv=cv, n_jobs=n_jobs, train_sizes=train_sizes)
+        estimator, X, y, cv=cv, n_jobs=n_jobs, train_sizes=train_sizes, verbose=100)
     train_scores_mean = np.mean(train_scores, axis=1)
     train_scores_std = np.std(train_scores, axis=1)
     test_scores_mean = np.mean(test_scores, axis=1)
     test_scores_std = np.std(test_scores, axis=1)
     plt.grid()
 
+    print("Making beautiful graph")
     plt.fill_between(train_sizes, train_scores_mean - train_scores_std,
                      train_scores_mean + train_scores_std, alpha=0.1,
                      color="r")
@@ -69,8 +73,10 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
              label="Training score")
     plt.plot(train_sizes, test_scores_mean, 'o-', color="g",
              label="Cross-validation score")
+    sys.stdout.flush()
 
     plt.legend(loc="best")
 
     plt.show()
+    plt.savefig("plot.jpg")
     return plt

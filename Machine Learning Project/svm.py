@@ -8,12 +8,12 @@ from sklearn.model_selection import ShuffleSplit
 def svclassifier(xtrain, ytrain, xtest, ytest):
 
     print("Running SVM")
-    svm = SVC(C=2.0, kernel='rbf', gamma=0.001, n_jobs=6)
+    svm = SVC(C=2.0, kernel='rbf', gamma=0.001)
     sys.stdout.flush()
 
     print("Plotting Learnign curve")
     sys.stdout.flush()
-    cv = ShuffleSplit(n_splits=100, test_size=0.2, random_state=0)
+    cv = ShuffleSplit(n_splits=15, test_size=0.2, random_state=0)
     plot_learning_curve(svm, "SVM Training", xtrain, ytrain,
                         ylim=(0.7, 1.01), cv=cv, n_jobs=4)
 

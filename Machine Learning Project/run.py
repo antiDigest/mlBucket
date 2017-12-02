@@ -20,7 +20,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # Classifiers
 from svm import svclassifier
-from lightgbm import light
+from dart import light
 from xgbalgo import xgb
 
 # Getting Data

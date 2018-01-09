@@ -1,3 +1,11 @@
+##
+# document class
+# Should essentially extract those documents represented by one class
+#
+# @author antriksh
+# Version 1: 09/16/2017
+
+
 class Directory():
 
 	class Document():

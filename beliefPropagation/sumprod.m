@@ -5,10 +5,6 @@
 %     Made separate functions: messages, beliefs and energy
 
 function Z = sumprod(A, w, its)
-    function [x, y] = swap(x1, y1)
-        x = x1;
-        y = y1;
-    end
 
 %     disp(A); % DISPLAY MATRIX
     
@@ -16,7 +12,7 @@ function Z = sumprod(A, w, its)
     [m,n]= size(A); % Size of (rows and columns) Adjacency Matrix of graph
     Vertices = 1:m; % Vertices of graph
 
-    [mitoc, mctoi] = messages(n, k, A, w, its);
+    [mitoc, mctoi] = messages(n, k, A, w, its, 'sum');
     
     [bi, bc] = beliefs(n, k, A, w, mitoc, mctoi);
     

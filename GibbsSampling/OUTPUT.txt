@@ -1,0 +1,165 @@
+for burnin = [2^6, 2^10, 2^14, 2^18]
+for its = [2^6, 2^10, 2^14, 2^18]
+gibbs(A, w, burnin, its); % The edge values have been hard coded to [2 4 1 3 4] 
+end
+end
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 64; its: 64
+Edge (a,d), color=4: 0.42188
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 64; its: 1024
+Edge (a,d), color=4: 0.12207
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 64; its: 16384
+Edge (a,d), color=4: 0.20239
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 64; its: 262144
+Edge (a,d), color=4: 0.19913
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 1024; its: 64
+Edge (a,d), color=4: 0.03125
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 1024; its: 1024
+Edge (a,d), color=4: 0.24316
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 1024; its: 16384
+Edge (a,d), color=4: 0.2027
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 1024; its: 262144
+Edge (a,d), color=4: 0.19358
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 16384; its: 64
+Edge (a,d), color=4: 0.3125
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 16384; its: 1024
+Edge (a,d), color=4: 0.20312
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 16384; its: 16384
+Edge (a,d), color=4: 0.19171
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 16384; its: 262144
+Edge (a,d), color=4: 0.19864
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 262144; its: 64
+Edge (a,d), color=4: 0
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 262144; its: 1024
+Edge (a,d), color=4: 0.16113
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 262144; its: 16384
+Edge (a,d), color=4: 0.1983
+
+edgeValues =
+
+     0     2     4     1
+     0     0     0     3
+     0     0     0     4
+     0     0     0     0
+
+burnin: 262144; its: 262144
+Edge (a,d), color=4: 0.19532

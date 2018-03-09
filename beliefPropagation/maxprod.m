@@ -8,7 +8,7 @@ function X = maxprod(A, w, its)
     [m,n]= size(A); % Size of (rows and columns) Adjacency Matrix of graph
     Vertices = 1:m; % Vertices of graph
     
-    [mitoc, mctoi] = messages(n, k, A, w, its);
+    [mitoc, mctoi] = messages(n, k, A, w, its, 'max');
     
     [bi, bc] = beliefs(n, k, A, w, mitoc, mctoi);
     
@@ -17,26 +17,43 @@ function X = maxprod(A, w, its)
     for i = 1:n
         clique = getEdges(A, i);
         sizeClique = size(clique, 2);
-        belief = squeeze(bi(i, clique(:), :)) * bc{i};
-        mx = max(belief(:));
-        argmax = find(belief == mx)';
-        
-        if size(argmax, 2) > 1 | isempty(argmax)
-            X = zeros(n, n);
-            return;
+        if sizeClique > 1
+            belief = bc{i};
+            mx = max(belief(:));
+            argmax = find(belief == mx)';
+
+            if size(argmax, 2) > 1 | isempty(argmax)
+                for j = clique
+                    X(i, j) = 0;
+                    X(j, i) = 0;
+                end
+                continue;
+            end
+
+            arg = cell(1, sizeClique);
+            [arg{:}] = ind2sub(size(belief), argmax)
+
+            ind = 1;
+            for j = clique
+                if X(i, j) ~= 0 && X(i, j) ~= arg{ind}
+                    X(i, j) = 0;
+                    X(j, i) = 0;
+                else
+                    arg{ind}
+                    X(i, j) = arg{ind};
+                    X(j, i) = arg{ind};
+                    ind = ind + 1;
+                end
+            end
+        else
+            for j = clique
+                belief = bi(i, j, :);
+                mx = max(belief(:));
+                argmax = find(belief == mx)';
+
+                X(i, j) = argmax;
+                X(j, i) = argmax;
+            end
         end
-        
-        arg = cell(1, sizeClique);
-        [arg{:}] = ind2sub(size(belief), argmax)
-        
-        ind = 1;
-        for j = clique
-            X(i, j) = arg{ind};
-            X(j, i) = arg{ind};
-            ind = ind + 1;
-        end
-        break;
     end
-    
-    X
 end

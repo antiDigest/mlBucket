@@ -2,7 +2,7 @@
 % @author: antriksh
 % Version 0: 2/25/2018
 
-function [mitoc, mctoi] = messages(n, k, A, w, its)
+function [mitoc, mctoi] = messages(n, k, A, w, its, type)
     mitoc = ones(n, n, k); % Messages Clique to i
     mctoi = ones(n, n, k); % Messages i to Clique
     
@@ -33,7 +33,11 @@ function [mitoc, mctoi] = messages(n, k, A, w, its)
                 for index = 1:length(cartProd)
                     colors = cartProd(:, index);
                     amax = all(diff(sort(colors(:))));
-                    msg(i, j, colors(end)) = msg(i, j, colors(end)) + sum(amax .* mOthersToC);
+                    if type == 'sum'
+                        msg(i, j, colors(end)) = msg(i, j, colors(end)) + sum(amax .* mOthersToC);
+                    elseif type == 'max'
+                        msg(i, j, colors(end)) = msg(i, j, colors(end)) + max(amax .* mOthersToC);
+                    end
                 end
                 
                 mctoi(i, j, :) = normalize(msg(i, j, :));

@@ -22,7 +22,7 @@ function [bi, bc] = beliefs(n, k, A, w, mitoc, mctoi)
         if sizeClique > 1
             ks = k * ones(1, sizeClique);
 
-            msg = zeros(ks);
+            msg = ones(ks);
             if size(ks, 2) == 1
                 msg = ones(1, ks);
             end

@@ -20,8 +20,11 @@ function e = energy(A, n, k, bc, bi)
 %                 values = mat2cell(colors', 1, sizeClique);
                 amax(index) = all(diff(sort(colors)));
             end
-            
-            x = log(amax .^ bc{i});
+            if amax
+                x = log(amax .^ bc{i});
+            else
+                x = 0;
+            end
             z2(i) = z2(i) + sum(x(:));
         end
     end

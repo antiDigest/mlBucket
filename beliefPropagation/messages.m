@@ -8,7 +8,7 @@ function [mitoc, mctoi] = messages(n, k, A, w, its, type)
     
 %     LOOP FOR NUMBER OF INTERATIONS
     for it = 1:its
-        disp("Iteration: " + it);
+%         disp("Iteration: " + it);
         
 %         UPDATING MESSAGES FROM CLIQUE TO VARIABLES
         msg = zeros(size(mctoi));

@@ -1,0 +1,3 @@
+[submodule "NER"]
+	path = NER
+	url = https://github.com/evamy/NER

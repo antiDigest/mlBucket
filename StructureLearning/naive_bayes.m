@@ -49,8 +49,8 @@ function naive_bayes()
     accuracy = acc / total;
     
     [predictedspecies, Posterior, ~] = predict(Mdl, TEST(:,2:end));
-    Posterior(89:100, :)
-    posterior(89:100, :)
+%     Posterior(89:100, :)
+%     posterior(89:100, :)
     accuracy
     
     function p = probability(column1, value1, column2, value2)

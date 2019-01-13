@@ -1,6 +1,4 @@
-#README.txt
-
-Machine Learning CS6375 -- Assignment 2
+# Machine Learning CS6375 -- Assignment 2
 
 PART 2
 
